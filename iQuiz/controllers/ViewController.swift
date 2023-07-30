@@ -8,12 +8,21 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+	
+	@IBOutlet weak var initQuizButton: UIButton!
+	
+	@IBAction func buttonClicked(_ sender: Any) {
+		
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+		configureLayout()
 	}
-
-
+	
+	func configureLayout() {
+		initQuizButton.layer.cornerRadius = 12.0
+	}
+	
 }
 
