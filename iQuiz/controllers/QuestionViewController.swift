@@ -21,9 +21,9 @@ class QuestionViewController: UIViewController {
 		
 		if userGotRightAnswer {
 			score += 1
-			button.backgroundColor = UIColor(red: 11/255, green: 161/255, blue: 53/255, alpha: 1.0)
+			button.backgroundColor = UIColor.greenBackgroundColor
 		} else {
-			button.backgroundColor = UIColor(red: 211/255, green: 17/255, blue: 17/255, alpha: 1.0)
+			button.backgroundColor = UIColor.redBackgroundColor
 		}
 		
 		if questionNumber < questions.count - 1 {
@@ -35,6 +35,8 @@ class QuestionViewController: UIViewController {
 				userInfo: nil,
 				repeats: false
 			)
+		} else {
+			goToPerformanceScreen()
 		}
 	}
 	
@@ -42,6 +44,12 @@ class QuestionViewController: UIViewController {
 		super.viewDidLoad()
 		configureLayout()
 		configureQuestion()
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		guard let performanceViewController = segue.destination as? PerformanceViewController else { return }
+		
+		performanceViewController.score = score
 	}
 	
 	func configureLayout() {
@@ -63,5 +71,13 @@ class QuestionViewController: UIViewController {
 			button.backgroundColor = UIColor(red: 116/255, green: 50/255, blue: 255/255, alpha: 1.0)
 		}
 	}
+	
+	func goToPerformanceScreen() {
+		performSegue(
+			withIdentifier: "goToPerformanceScreen",
+			sender: nil
+		)
+	}
+	
 	
 }

@@ -21,6 +21,7 @@ class ViewController: UIViewController {
 	}
 	
 	func configureLayout() {
+		navigationItem.hidesBackButton = true
 		initQuizButton.layer.cornerRadius = 12.0
 	}
 	
